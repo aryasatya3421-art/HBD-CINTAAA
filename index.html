@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Cinta! 💖</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ffeaa7 0%, #ff7675 100%);
+            font-family: 'Poppins', sans-serif;
+            color: #4a4a4a;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Kelopak Hati Berjatuhan */
+        .heart {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 20px;
+            animation: fall linear infinite;
+            top: -10%;
+            z-index: 1;
+        }
+
+        @keyframes fall {
+            0% { top: -10%; transform: translateX(0) rotate(0deg); }
+            100% { top: 110%; transform: translateX(100px) rotate(360deg); }
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px 30px;
+            border-radius: 25px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            max-width: 450px;
+            width: 90%;
+            backdrop-filter: blur(8px);
+            animation: popUp 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 10;
+            position: relative;
+        }
+
+        .foto-placeholder {
+            font-size: 5rem;
+            margin-bottom: 10px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        h1 {
+            color: #d63031;
+            font-size: 2.3rem;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+
+        h2 {
+            color: #e84393;
+            font-size: 1.5rem;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #ff7675, #e84393);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(232, 67, 147, 0.4);
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(232, 67, 147, 0.6);
+        }
+
+        /* Surat Rahasia */
+        #surat-cinta {
+            display: none;
+            margin-top: 25px;
+            padding: 20px;
+            background: #fff5f5;
+            border-radius: 15px;
+            border: 2px dashed #ff7675;
+            text-align: left;
+            animation: fadeIn 1s ease;
+        }
+
+        #surat-cinta p {
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+        }
+
+        /* Animasi */
+        @keyframes popUp {
+            0% { transform: scale(0.7); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="foto-placeholder">👑</div>
+        <h1>Selamat Ulang Tahun,</h1>
+        <h2>Cinta-ku ✨💖</h2>
+        
+        <p>Hari ini adalah hari favoritku di sepanjang tahun, karena di hari inilah orang paling spesial dalam hidupku dilahirkan ke dunia.</p>
+        
+        <button class="btn" onclick="bukaSurat()">Buka Surat dari Aku 💌</button>
+
+        <div id="surat-cinta">
+            <p>Hai Cinta, ❤️</p>
+            <p>Selamat bertambah usia ya. Terima kasih sudah hadir dan membawa banyak warna indah di hidupku. Aku selalu bersyukur atas setiap tawa dan momen yang kita lewati bareng.</p>
+            <p>Semoga di umur yang baru ini, kamu selalu diberikan kesehatan, kebahagiaan yang gak putus-putus, dan dipermudah semua urusanmu. Aku akan selalu ada di sini buat dukung kamu.</p>
+            <p><i>I love you more than words can say. Happy Birthday! 🎂✨</i></p>
+        </div>
+    </div>
+
+    <script>
+        // Membuat efek hati bertaburan secara otomatis
+        function createHearts() {
+            const heartIcons = ['❤️', '💖', '💝', '💕', '🌸'];
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.classList.add('heart');
+                    heart.innerText = heartIcons[Math.floor(Math.random() * heartIcons.length)];
+                    heart.style.left = Math.random() * 100 + 'vw';
+                    heart.style.animationDuration = (Math.random() * 3 + 2) + 's'; 
+                    heart.style.fontSize = (Math.random() * 15 + 15) + 'px';
+                    document.body.appendChild(heart);
+
+                    // Hapus hati setelah animasi selesai agar tidak memberatkan browser
+                    setTimeout(() => {
+                        heart.remove();
+                    }, 5000);
+                }, i * 300);
+            }
+        }
+
+        // Jalankan efek hati berulang
+        setInterval(createHearts, 3000);
+        createHearts();
+
+        // Fungsi tombol buka surat
+        function bukaSurat() {
+            const surat = document.getElementById("surat-cinta");
+            const tombol = document.querySelector(".btn");
+            
+            if (surat.style.display === "none" || surat.style.display === "") {
+                surat.style.display = "block";
+                tombol.innerText = "Tutup Surat 🔒";
+                // Scroll otomatis ke bawah agar surat langsung kelihatan di HP
+                surat.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                surat.style.display = "none";
+                tombol.innerText = "Buka Surat dari Aku 💌";
+            }
+        }
+    </script>
+
+</body>
+</html>
